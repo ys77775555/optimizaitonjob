@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OptimizejobApplication {
+public class OptimizedJobApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OptimizejobApplication.class, args);
+		SpringApplication.run(OptimizedJobApplication.class, args);
 	}
 }
