@@ -23,6 +23,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OptimizejobApplicationTests {
@@ -47,7 +48,7 @@ public class OptimizejobApplicationTests {
 
     final Campaign campaign2 = new Campaign(2, new OptimizationProps(1, EventType.install, EventType.purchase, 100.0f));
 
-    final Campaign campaign3 = new Campaign(3, new OptimizationProps(1, EventType.install, EventType.app_open, 100.0f));
+    final Campaign campaign3 = new Campaign(3, new OptimizationProps(1, EventType.install, EventType.app_open, 55.0f));
 
     @Before
     public void setUp() {
@@ -61,7 +62,7 @@ public class OptimizejobApplicationTests {
         Stream.of(campaign1,campaign2, campaign3).forEach(campaign -> assertEquals(campaign.getBlacklistedPublishers().size(),0));
         optimizationJob.run();
 
-        Stream.of(campaign1,campaign2, campaign3).forEach(campaign -> assertEquals(campaign.getBlacklistedPublishers().size(),0));
+        assertTrue(campaign3.getBlacklistedPublishers().size() > 0);
 
 
     }
